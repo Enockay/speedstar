@@ -1,4 +1,4 @@
-import React from 'react';
+import 'leaflet/dist/leaflet.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './HomePage'; // HomePage where Home component is defined
 import Header from './Header';
