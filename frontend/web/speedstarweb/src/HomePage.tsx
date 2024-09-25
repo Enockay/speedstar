@@ -6,6 +6,7 @@ import parcel from './assets/perceldelivery2.jpeg';
 import LocalPartnerships from './pertinerships';
 import DeliveryAreas from './DeliveryAreas';
 import background from './assets/speedstartbackground.jpeg';
+import HowItWorks from './HowItWorks';
 
 const Home: React.FC = () => {
   return (
@@ -97,6 +98,7 @@ const Home: React.FC = () => {
       </svg>
 
       <LocalPartnerships />
+      <HowItWorks/>
       <DeliveryAreas />
     </div>
   );

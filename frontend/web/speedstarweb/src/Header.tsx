@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import logo from "./assets/whitelogo.svg";
 import { FaBars, FaTimes, FaPhoneAlt } from "react-icons/fa";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation(); // Get the current path
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  // Helper function to determine if the link is active
+  const isActiveLink = (path: string) => location.pathname === path;
 
   return (
     <>
@@ -24,19 +29,48 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-lg font-medium">
-            <a href="/Service" className="hover:text-yellow-300 transition duration-300">
+            <a
+              href="/"
+              className={`${
+                isActiveLink("/") ? "text-yellow-300" : "hover:text-yellow-300"
+              } transition duration-300`}
+            >
+              Home
+            </a>
+            <a
+              href="/Service"
+              className={`${
+                isActiveLink("/Service") ? "text-yellow-300" : "hover:text-yellow-300"
+              } transition duration-300`}
+            >
               Services
             </a>
-            <a href="#pricing" className="hover:text-yellow-300 transition duration-300">
+            <a
+              href="#pricing"
+              className="hover:text-yellow-300 transition duration-300"
+            >
               Pricing
             </a>
-            <a href="/AboutUs" className="hover:text-yellow-300 transition duration-300">
+            <a
+              href="/AboutUs"
+              className={`${
+                isActiveLink("/AboutUs") ? "text-yellow-300" : "hover:text-yellow-300"
+              } transition duration-300`}
+            >
               About Us
             </a>
-            <a href="#faq" className="hover:text-yellow-300 transition duration-300">
+            <a
+              href="/FAQ"
+              className={`${
+                isActiveLink("/FAQ") ? "text-yellow-300" : "hover:text-yellow-300"
+              } transition duration-300`}
+            >
               FAQ
             </a>
-            <a href="#contact-us" className="hover:text-yellow-300 transition duration-300">
+            <a
+              href="#contact-us"
+              className="hover:text-yellow-300 transition duration-300"
+            >
               Contact Us
             </a>
           </nav>
@@ -77,22 +111,54 @@ const Header: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-orange-800 text-white transition-all duration-500 ease-in-out">
             <nav className="px-6 py-4 space-y-4">
-              <a href="/Service" className="block hover:text-yellow-300 transition duration-300">
+              <a
+                href="/"
+                className={`${
+                  isActiveLink("/") ? "text-yellow-300" : "hover:text-yellow-300"
+                } block transition duration-300`}
+              >
+                Home
+              </a>
+              <a
+                href="/Service"
+                className={`${
+                  isActiveLink("/Service") ? "text-yellow-300" : "hover:text-yellow-300"
+                } block transition duration-300`}
+              >
                 Services
               </a>
-              <a href="#pricing" className="block hover:text-yellow-300 transition duration-300">
+              <a
+                href="#pricing"
+                className="block hover:text-yellow-300 transition duration-300"
+              >
                 Pricing
               </a>
-              <a href="/AboutUs" className="block hover:text-yellow-300 transition duration-300">
+              <a
+                href="/AboutUs"
+                className={`${
+                  isActiveLink("/AboutUs") ? "text-yellow-300" : "hover:text-yellow-300"
+                } block transition duration-300`}
+              >
                 About Us
               </a>
-              <a href="#faq" className="block hover:text-yellow-300 transition duration-300">
+              <a
+                href="/FAQ"
+                className={`${
+                  isActiveLink("/FAQ") ? "text-yellow-300" : "hover:text-yellow-300"
+                } block transition duration-300`}
+              >
                 FAQ
               </a>
-              <a href="#contact-us" className="block hover:text-yellow-300 transition duration-300">
+              <a
+                href="#contact-us"
+                className="block hover:text-yellow-300 transition duration-300"
+              >
                 Contact Us
               </a>
-              <a href="#track-order" className="block bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-yellow-400 transition duration-300">
+              <a
+                href="#track-order"
+                className="block bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-yellow-400 transition duration-300"
+              >
                 Track Order
               </a>
             </nav>
