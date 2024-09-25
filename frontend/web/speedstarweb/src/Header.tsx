@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             <a href="#pricing" className="hover:text-yellow-300 transition duration-300">
               Pricing
             </a>
-            <a href="#about-us" className="hover:text-yellow-300 transition duration-300">
+            <a href="/AboutUs" className="hover:text-yellow-300 transition duration-300">
               About Us
             </a>
             <a href="#faq" className="hover:text-yellow-300 transition duration-300">

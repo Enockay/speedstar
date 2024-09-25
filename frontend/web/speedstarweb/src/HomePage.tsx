@@ -6,6 +6,7 @@ import parcel from './assets/perceldelivery2.jpeg';
 import LocalPartnerships from './pertinerships';
 import DeliveryAreas from './DeliveryAreas';
 import background from './assets/speedstartbackground.jpeg';
+import AboutUs from './AboutUs';
 
 const Home: React.FC = () => {
   return (
@@ -15,12 +16,12 @@ const Home: React.FC = () => {
         className="relative w-full h-screen bg-cover bg-center"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <div className="relative bg-gradient-to-b from-yellow-500 to-orange-500 opacity-95">
+        <div className="relative bg-gradient-to-b from-yellow-500 to-orange-500 opacity-80">
           <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center font-bold px-6 md:px-12">
-            <h1 className="text-3xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">
+            <h1 className=" animate-pulse text-3xl md:text-6xl font-extrabold text-lime-400 mb-6 drop-shadow-lg">
               SPEEDSTAR DELIVERY SERVICES
             </h1>
-            <p className="text-lg md:text-2xl font-medium text-white mb-8 max-w-3xl">
+            <p className="text-lg md:text-2xl font-medium text-gray-900 mb-8 max-w-3xl">
               Fast and reliable delivery solutions for every need – Movers, Food Delivery, Grocery, and Parcels. We get it done quickly and safely!
             </p>
             <div className="flex space-x-4">
@@ -93,7 +94,7 @@ const Home: React.FC = () => {
       </section>
 
       <svg className="bg-gray-50 w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path className="text-gray-300 fill-current" fillOpacity="0.99" d="M0,160L60,150C120,140,240,120,360,125C480,130,600,160,720,180C840,200,960,210,1080,190C1200,170,1320,130,1380,110L1440,80L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        <path className="text-lime-200 fill-current" fillOpacity="0.99" d="M0,160L60,150C120,140,240,120,360,125C480,130,600,160,720,180C840,200,960,210,1080,190C1200,170,1320,130,1380,110L1440,80L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
       </svg>
 
       <LocalPartnerships />
