@@ -4,6 +4,7 @@ import Home from './HomePage'; // HomePage where Home component is defined
 import Header from './Header';
 import Footer from './Footer';
 import AboutUs from './AboutUs';
+import  CategoriesProducts from "./Services";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           {/* Define the home route */}
           <Route path="/" element={<Home />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/Service" element={<CategoriesProducts/>} />
         </Routes>
         <Footer/>
       </div>

@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-lg font-medium">
-            <a href="#services" className="hover:text-yellow-300 transition duration-300">
+            <a href="/Service" className="hover:text-yellow-300 transition duration-300">
               Services
             </a>
             <a href="#pricing" className="hover:text-yellow-300 transition duration-300">
@@ -77,13 +77,13 @@ const Header: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-orange-800 text-white transition-all duration-500 ease-in-out">
             <nav className="px-6 py-4 space-y-4">
-              <a href="#services" className="block hover:text-yellow-300 transition duration-300">
+              <a href="/Service" className="block hover:text-yellow-300 transition duration-300">
                 Services
               </a>
               <a href="#pricing" className="block hover:text-yellow-300 transition duration-300">
                 Pricing
               </a>
-              <a href="#about-us" className="block hover:text-yellow-300 transition duration-300">
+              <a href="/AboutUs" className="block hover:text-yellow-300 transition duration-300">
                 About Us
               </a>
               <a href="#faq" className="block hover:text-yellow-300 transition duration-300">

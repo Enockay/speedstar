@@ -15,9 +15,9 @@ const Home: React.FC = () => {
         className="relative w-full h-screen bg-cover bg-center"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <div className="relative bg-gradient-to-b from-yellow-500 to-orange-500 opacity-80">
+        <div className="relative bg-gradient-to-b from-yellow-500 to-orange-500 opacity-65">
           <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center font-bold px-6 md:px-12">
-            <h1 className=" animate-pulse text-3xl md:text-6xl font-extrabold text-lime-400 mb-6 drop-shadow-lg">
+            <h1 className=" animate-pulse text-3xl md:text-6xl font-extrabold text-gray-900 mb-6 drop-shadow-lg">
               SPEEDSTAR DELIVERY SERVICES
             </h1>
             <p className="text-lg md:text-2xl font-medium text-gray-900 mb-8 max-w-3xl">
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
             <div className="flex space-x-4">
               <a
                 href="#book"
-                className="bg-yellow-800 hover:bg-yellow-600 text-white px-8 py-4 rounded-full font-semibold shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out"
+                className="bg-green-300 hover:bg-yellow-600 text-slate-900 px-8 py-4 rounded-full font-semibold shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out"
               >
                 Book Now
               </a>
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
       </section>
 
       <svg className="bg-gradient-to-b from-yellow-500 to-orange-500 w-full h-28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path className="text-white fill-current" fillOpacity="0.99" d="M0,160L60,150C120,140,240,120,360,125C480,130,600,160,720,180C840,200,960,210,1080,190C1200,170,1320,130,1380,110L1440,80L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        <path className="text-gray-50 fill-current" fillOpacity="0.99" d="M0,160L60,150C120,140,240,120,360,125C480,130,600,160,720,180C840,200,960,210,1080,190C1200,170,1320,130,1380,110L1440,80L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
       </svg>
 
       {/* Overview Section */}
