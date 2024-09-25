@@ -6,7 +6,6 @@ import parcel from './assets/perceldelivery2.jpeg';
 import LocalPartnerships from './pertinerships';
 import DeliveryAreas from './DeliveryAreas';
 import background from './assets/speedstartbackground.jpeg';
-import AboutUs from './AboutUs';
 
 const Home: React.FC = () => {
   return (
