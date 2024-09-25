@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import logo from "./assets/speedstarlogo.jpg";
+import logo from "./assets/whitelogo.svg";
+import { FaBars, FaTimes, FaPhoneAlt } from "react-icons/fa";
 
 const Header: React.FC = () => {
-  // State for mobile menu toggle
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -12,70 +12,88 @@ const Header: React.FC = () => {
   return (
     <>
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full bg-orange-700 text-white shadow-md z-50">
-        <div className="container mx-auto px-4 py-5 flex justify-between items-center">
+      <header className="fixed top-0 left-0 w-full bg-orange-900 text-white shadow-lg z-50">
+        <div className="container mx-auto md:px-6 px-3 py-4 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <img src={logo} alt="Speedstar Logo" className="w-10 h-10 mr-2" />
-            <span className="text-xl font-bold">Speedstar Delivery</span>
+            <img src={logo} alt="Speedstar Logo" className="w-12 h-12 mr-3" />
+            <span className="md:text-2xl text-xl font-extrabold tracking-wide">
+              Speedstar Delivery
+            </span>
           </div>
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-4">
-            <a href="#book" className="hover:underline hidden">Book Now</a>
-            <a href="#services" className="hover:underline">Services</a>
-            <a href="#pricing" className="hover:underline">Pricing</a>
-            <a href="#learn-more" className="hover:underline">Learn More</a>
-            <a href="#about-us" className="hover:underline">About Us</a>
-            <a href="#faq" className="hover:underline">FAQ</a>
+          <nav className="hidden md:flex space-x-6 text-lg font-medium">
+            <a href="#services" className="hover:text-yellow-300 transition duration-300">
+              Services
+            </a>
+            <a href="#pricing" className="hover:text-yellow-300 transition duration-300">
+              Pricing
+            </a>
+            <a href="#about-us" className="hover:text-yellow-300 transition duration-300">
+              About Us
+            </a>
+            <a href="#faq" className="hover:text-yellow-300 transition duration-300">
+              FAQ
+            </a>
+            <a href="#contact-us" className="hover:text-yellow-300 transition duration-300">
+              Contact Us
+            </a>
           </nav>
-          {/* Mobile Navigation */}
-          <div className="md:hidden text-left">
+
+          {/* CTA Button */}
+          <div className="hidden md:flex space-x-4 items-center">
+            <a
+              href="#track-order"
+              className="bg-yellow-500 hover:bg-yellow-400 text-black px-5 py-2 rounded-full font-semibold shadow-lg transition duration-300"
+            >
+              Track Order
+            </a>
+            <a
+              href="#contact-us"
+              className="text-white flex items-center space-x-2 hover:text-yellow-400 transition duration-300"
+            >
+              <FaPhoneAlt className="w-5 h-5" />
+              <span>Call Us</span>
+            </a>
+          </div>
+
+          {/* Mobile Navigation Toggle */}
+          <div className="md:hidden">
             <button
               className="text-white focus:outline-none"
               onClick={toggleMobileMenu}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
+              {isMobileMenuOpen ? (
+                <FaTimes className="h-6 w-6" />
+              ) : (
+                <FaBars className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-orange-700 text-white">
-            <nav className="px-4 py-2 space-y-2">
-              <a href="#book" className="block hover:underline">
-                Book Now
-              </a>
-              <a href="#learn-more" className="block hover:underline">
-                Learn More
-              </a>
-              <a href="#services" className="block hover:underline">
+          <div className="md:hidden bg-orange-800 text-white transition-all duration-500 ease-in-out">
+            <nav className="px-6 py-4 space-y-4">
+              <a href="#services" className="block hover:text-yellow-300 transition duration-300">
                 Services
               </a>
-              <a href="#pricing" className="block hover:underline">
+              <a href="#pricing" className="block hover:text-yellow-300 transition duration-300">
                 Pricing
               </a>
-              <a href="#about-us" className="block hover:underline">
+              <a href="#about-us" className="block hover:text-yellow-300 transition duration-300">
                 About Us
               </a>
-              <a href="#faq" className="block hover:underline">
+              <a href="#faq" className="block hover:text-yellow-300 transition duration-300">
                 FAQ
               </a>
-              <a href="#contact-us" className="block hover:underline">
+              <a href="#contact-us" className="block hover:text-yellow-300 transition duration-300">
                 Contact Us
+              </a>
+              <a href="#track-order" className="block bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-yellow-400 transition duration-300">
+                Track Order
               </a>
             </nav>
           </div>
@@ -84,4 +102,5 @@ const Header: React.FC = () => {
     </>
   );
 };
- export default Header;
+
+export default Header;

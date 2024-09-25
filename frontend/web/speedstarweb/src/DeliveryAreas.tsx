@@ -28,7 +28,7 @@ const futureExpansion = [
 
 const DeliveryAreas: React.FC = () => {
   return (
-    <section className="bg-gray-100 py-10 px-5 md:px-20">
+    <section className="bg-gray-100 py-10 px-5 md:px-20 ">
       {/* Headline */}
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold text-orange-700">Where We Deliver</h2>
