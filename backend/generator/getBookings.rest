@@ -1,0 +1,7 @@
+PUT http://localhost:3001/bookings/66f47fa8196a5132e5ab8a83
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjQ3ZTVjMTk2YTUxMzJlNWFiOGE4MCIsImlhdCI6MTcyNzI5OTE2NCwiZXhwIjoxNzI3MzAyNzY0fQ.YHb_MixSKC0pnVSOo5Ivqojfg3v8DLzRnTv4VVc3AK4
+
+{
+    "status" : "confirmed"
+}

@@ -3,7 +3,7 @@ var jwt = require('jsonwebtoken')
 var usersRouter = express.Router();
 var User = require('../models/user')
 var bcrypt = require('bcrypt');
-var transporter = require('../utils/configs')
+var configs = require('../utils/configs')
 
 
 
@@ -14,9 +14,10 @@ usersRouter.get('/', async (req, res) => {
 })
 
 usersRouter.post('/register', async (req,res) => {
-  const {firstName, secondName, email, password, phone, address} = req.body
+  const {firstName, secondName, email, password, phone, address,role} = req.body
 
   try {
+    const date = new Date()
     const existingUser = await User.findOne({email})
     if(existingUser) {
       return res.status(400).render('index', {msg : 'user already exists, try log in'})
@@ -31,7 +32,9 @@ usersRouter.post('/register', async (req,res) => {
       email,
       password : passwordHash,
       phone,
-      address
+      address,
+      createdAt: date,
+      role
     })
     console.log(newUser)
   
@@ -60,7 +63,7 @@ usersRouter.post('/login', async (req,res) => {
   try {
     const existingUser = await User.findOne({email})
     if(!existingUser) {
-      return res.status(400).json({ msg : 'Inavalid email or password'})
+      return res.status(400).json({ msg : 'Invalid email or password'})
     }
 
     const passwordMatch = bcrypt.compare(password, existingUser.password)
@@ -108,7 +111,7 @@ usersRouter.post('/forgot-password', async (req,res) => {
 
     }
 
-    transporter.sendMail(mailOption)
+    configs.transporter.sendMail(mailOption)
     
     res.status(200).json({msg: "Password reset email sent"})
   } catch(error) {
