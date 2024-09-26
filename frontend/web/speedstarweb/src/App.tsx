@@ -6,6 +6,7 @@ import Footer from './Footer';
 import AboutUs from './AboutUs';
 import  CategoriesProducts from "./Services";
 import FAQ from './FAQ';
+import FoodDeliveryMenu from './foodMenu';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Service" element={<CategoriesProducts/>} />
           <Route path="/FAQ" element={<FAQ/>} />
+          <Route path="/foodDeliveryMenu" element={<FoodDeliveryMenu/>} />
         </Routes>
         <Footer/>
       </div>
