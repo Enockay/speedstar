@@ -18,21 +18,21 @@ const Home: React.FC = () => {
       >
         <div className="relative bg-gradient-to-b from-yellow-500 to-orange-500 opacity-65">
           <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center font-bold px-6 md:px-12">
-            <h1 className=" animate-pulse text-3xl md:text-6xl font-extrabold text-gray-900 mb-6 drop-shadow-lg">
+            <h1 className=" animate-pulse text-3xl md:text-6xl font-extrabold text-yellow-200 mb-6 drop-shadow-lg">
               SPEEDSTAR DELIVERY SERVICES
             </h1>
-            <p className="text-lg md:text-2xl font-medium text-gray-900 mb-8 max-w-3xl">
+            <p className="text-lg md:text-2xl font-medium text-sky-950 mb-8 max-w-3xl">
               Fast and reliable delivery solutions for every need – Movers, Food Delivery, Grocery, and Parcels. We get it done quickly and safely!
             </p>
             <div className="flex space-x-4">
               <a
-                href="#book"
+                href="/Service"
                 className="bg-green-300 hover:bg-yellow-600 text-slate-900 px-8 py-4 rounded-full font-semibold shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out"
               >
                 Book Now
               </a>
               <a
-                href="#learn-more"
+                href="/FAQ"
                 className="bg-white hover:bg-gray-200 text-gray-800 px-8 py-4 rounded-full font-semibold shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out"
               >
                 Learn More
