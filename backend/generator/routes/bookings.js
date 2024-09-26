@@ -17,6 +17,7 @@ bookingRouter.get('/:id', async (req,res) => {
 bookingRouter.get('/user',middlewares, async (req,res) => {
     try{
         const userId = req.user.id
+        console.log(userId)
 
         const bookings = await Booking.find({ userId }).populate('user')
 

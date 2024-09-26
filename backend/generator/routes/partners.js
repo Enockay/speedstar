@@ -57,7 +57,7 @@ partnersRouter.put('/:id',middlewares, configs.isAdmin, async (req,res) => {
             address
         }
 
-        const updatedPartner = await Partner.findByIdAndUpdate(req.params.id,partners,{new: true})
+        await Partner.findByIdAndUpdate(req.params.id,partners,{new: true})
 
         
         res.status(200).json({msg: "Partner information updated successfully"})
