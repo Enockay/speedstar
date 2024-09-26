@@ -1,11 +1,14 @@
 const mongoose = require('mongoose')
 
 const PartnerSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        unique: true
+    },
     logoUrl: String,
     serviceType: { type: String, enum: ['hotel', 'supermarket', 'mover', 'parcel'] },
     contactInfo: {
-    phone: String,
+    phone: Number,
     email: String,
     address: String,
     },

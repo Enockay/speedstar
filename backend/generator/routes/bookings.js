@@ -16,9 +16,9 @@ bookingRouter.get('/:id', async (req,res) => {
 
 bookingRouter.get('/user',middlewares, async (req,res) => {
     try{
-        const userId = req.user._id
+        const userId = req.user.id
 
-        const bookings = await Booking.find({ userId })
+        const bookings = await Booking.find({ userId }).populate('user')
 
         if(!bookings || bookings.length < 0) {
             return res.status(404).json({msg : "No booking record for the user, try booking available products"})
