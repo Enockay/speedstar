@@ -1,23 +1,34 @@
 import React from 'react';
-import movers from "./assets/movers.jpeg";
-import Delivery from "./assets/fooddelivery.jpg";
+// Importing images for each service from the assets folder
+import movers from "./assets/mover.jpg";
+import Delivery from "./assets/food delivery2.jpeg";
 import groccery from "./assets/grocery.jpg";
-import percel from "./assets/perceldelivery2.jpeg";
-import shooping from "./assets/shooping.jpg";
+import percel from "./assets/perceldelivery.jpeg";
+import shooping from "./assets/supermarketshopping.jpg";
 
 const CategoriesProducts: React.FC = () => {
     return (
+        // Main container with padding and background color
         <div className="w-full py-16 px-6 lg:px-24 bg-gray-100">
-            <h1 className="text-3xl font-bold text-center text-green-900 mb-4 mt-8">What We Offer</h1>
+            {/* Main heading with animation and styling */}
+            <h1 className="md:text-2xl animate-bounce text-xl font-bold text-center text-green-900 mb-4 mt-8">
+                What We Offer
+            </h1>
+            {/* Subheading providing a brief overview */}
             <h2 className="text-xl text-center text-gray-700 mb-8">
                 Comprehensive Delivery Solutions for Every Need
             </h2>
 
+            {/* Grid layout for services, responsive for different screen sizes */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                {/* Service 1: Speedstar Movers */}
+                
+                {/* 
+                    Service 1: Speedstar Movers
+                    Description: Handles residential and office relocations with comprehensive services.
+                */}
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                     <img
-                        src={movers}// Replace with actual image
+                        src={movers} // Image representing the Movers service
                         alt="Speedstar Movers"
                         className="w-full h-64 object-cover"
                     />
@@ -32,10 +43,13 @@ const CategoriesProducts: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Service 2: Food Delivery */}
+                {/* 
+                    Service 2: Food Delivery
+                    Description: Delivers meals from local hotels and restaurants to customers' doorsteps.
+                */}
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                     <img
-                        src={Delivery} // Replace with actual image
+                        src={Delivery} // Image representing the Food Delivery service
                         alt="Food Delivery"
                         className="w-full h-64 object-cover"
                     />
@@ -47,14 +61,16 @@ const CategoriesProducts: React.FC = () => {
                         <a href="/foodDeliveryMenu" className="block w-full bg-red-500 text-white text-center py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300">
                             Order now
                         </a>
-
                     </div>
                 </div>
 
-                {/* Service 3: Grocery Shopping */}
+                {/* 
+                    Service 3: Grocery Shopping
+                    Description: Offers grocery shopping from local stalls and supermarkets with delivery.
+                */}
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                     <img
-                        src={groccery} // Replace with actual image
+                        src={groccery} // Image representing the Grocery Shopping service
                         alt="Grocery Shopping"
                         className="w-full h-64 object-cover"
                     />
@@ -69,10 +85,13 @@ const CategoriesProducts: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Service 4: Supermarket Shopping */}
+                {/* 
+                    Service 4: Supermarket Shopping
+                    Description: Facilitates shopping from leading supermarkets with direct delivery.
+                */}
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                     <img
-                        src={shooping} // Replace with actual image
+                        src={shooping} // Image representing the Supermarket Shopping service
                         alt="Supermarket Shopping"
                         className="w-full h-64 object-cover"
                     />
@@ -87,10 +106,13 @@ const CategoriesProducts: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Service 5: Parcel Delivery */}
+                {/* 
+                    Service 5: Parcel Delivery
+                    Description: Provides fast and reliable parcel delivery services for businesses and individuals.
+                */}
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                     <img
-                        src={percel} // Replace with actual image
+                        src={percel} // Image representing the Parcel Delivery service
                         alt="Parcel Delivery"
                         className="w-full h-64 object-cover"
                     />
@@ -106,6 +128,10 @@ const CategoriesProducts: React.FC = () => {
                 </div>
             </div>
 
+            {/* 
+                Additional Information Section
+                Highlights key features like tracking, rates, urgent deliveries, and community partnerships.
+            */}
             <div className="text-center mt-16">
                 <p className="text-lg text-gray-700">Reliable tracking system • Affordable rates • Support for urgent deliveries</p>
                 <p className="text-lg text-gray-700 mt-2">Community-focused partnerships with local businesses</p>
