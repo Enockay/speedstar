@@ -8,7 +8,7 @@ var configs = require('../utils/configs')
 
 
 usersRouter.get('/', async (req, res) => {
-  const users = await User.find({})
+  const users = await User.find({}).populate('bookings')
 
   res.json(users)
 })

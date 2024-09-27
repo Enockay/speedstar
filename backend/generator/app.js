@@ -13,7 +13,8 @@ var reviewRouter = require('./routes/reviews')
 
 
 var app = express();
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
+const hotelRouter = require('./routes/hotels');
 var MONGODB_URL = process.env.MONGODB_URL
 
 mongoose.connect(MONGODB_URL)
@@ -36,6 +37,7 @@ app.use('/users', usersRouter);
 app.use('/bookings', bookingRouter)
 app.use('/partners', partnersRouter)
 app.use('/reviews', reviewRouter)
+app.use('/hotels', hotelRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
