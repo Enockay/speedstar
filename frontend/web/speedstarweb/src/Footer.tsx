@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
                   </svg>
                 </div>
                 <div className="ml-[18px]">
-                  <a href="tel:+254 114 353111" className="font-Inter text-[14px] font-medium text-white">
+                  <a href="tel:+254114353111" className="font-Inter text-[14px] font-medium text-white">
                     +254 114 353111
                   </a>
                   <p className="font-Inter text-[12px] font-medium text-white">Support Number</p>

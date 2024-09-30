@@ -1,108 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import {  useParams, useNavigate } from 'react-router-dom';
-import palaceFries from "./assets/Palace-fries-logo-_2_.svg";
-import { Link } from 'react-router-dom';
-import burger from './assets/burger.jpeg';
-import pancakes from './assets/pancakes.jpg';
-import meatSteak from './assets/meatstake.jpeg';
-import fries from './assets/fries2.jpeg';
-import icecream from './assets/ice cream .jpeg';
+// src/FoodDeliveryMenu.tsx
+import React, { useState ,useEffect} from 'react';
+import { useNavigate, Link ,useParams} from 'react-router-dom';
+import { useAppContext , Meal, Hotel} from './Contexts/appContext';
 import pizza from "./assets/pizza2.jpeg";
 
-// Meal and Hotel interfaces
-export interface Meal {
-  id: number;
-  name: string;
-  category: 'Breakfast' | 'Lunch' | 'Dinner' | 'Snacks' | 'Desserts';
-  price: number;
-  image: string;
-  deliveryFee: number;
-  hotel: string;
-}
+// Import MealDetail and Checkout as separate components if needed
 
-interface Hotel {
-  id: number;
-  name: string;
-  logo: string;
-  meals: Meal[];
-}
-
-export interface CartItem {
-  meal: Meal;
-  quantity: number;
-}
-
-interface CartProps {
-  cart: CartItem[];
-  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>; // Add this line for setCart
-}
-// Dummy data for hotels and meals in case API fails
-const dummyHotels: Hotel[] = [
-  {
-    id: 1,
-    name: 'Palace Fries',
-    logo: palaceFries,
-    meals: [
-      { id: 1, name: 'Pancakes', category: 'Breakfast', price: 300, image: pancakes, deliveryFee: 50 ,hotel:'PalaceFries Hotel'},
-      { id: 2, name: 'Burger', category: 'Lunch', price: 600, image: burger, deliveryFee: 60,hotel:"PalaceFries Hotel" },
-      { id: 3, name: 'Steak', category: 'Dinner', price: 1200, image: meatSteak, deliveryFee: 70,hotel:"PalaceFries Hotel" },
-      { id: 4, name: 'Fries', category: 'Snacks', price: 250, image: fries, deliveryFee: 30,hotel:"PalaceFries Hotel" },
-      { id: 5, name: 'Ice Cream', category: 'Desserts', price: 200, image: icecream, deliveryFee: 40,hotel:"PalaceFries Hotel" },
-    ],
-  },
-  // Other hotels...
-];
-
-const FoodDeliveryMenu: React.FC<CartProps> = ({ cart, setCart }) => {
-  const [hotels, setHotels] = useState<Hotel[]>(dummyHotels); // Initial dummy data
+const FoodDeliveryMenu: React.FC = () => {
+  const { hotels, loading, error, addToCart,cart } = useAppContext();
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-
-  const fetchHotels = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get('http://localhost:3002/api/hotels'); // Replace with your actual API endpoint
-      setHotels(response.data); // Assume the API returns an array of hotels
-      setError(null); // Clear error if the fetch is successful
-    } catch (err) {
-      setError('Error fetching hotels and meals.');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchHotels();
-  }, []);
 
   const selectHotel = (hotel: Hotel) => {
     setSelectedHotel(hotel);
   };
 
-  const addToCart = (meal: Meal, quantity: number) => {
-    const existingItem = cart.find((item) => item.meal.id === meal.id);
-    if (existingItem) {
-      setCart(cart.map(item => item.meal.id === meal.id ? { ...item, quantity: item.quantity + quantity } : item));
-    } else {
-      setCart([...cart, { meal, quantity }]);
-    }
-    navigate('/cart'); // Change to the desired route
+  const handleAddToCart = (meal: Meal) => {
+    addToCart(meal, 1);
+    navigate('/cart');
   };
 
   return (
     <div
       className="mt-16 bg-cover min-h-screen md:p-8 p-4"
-      style={{ backgroundImage: `url(${pizza})` }} // Dynamically set the background image here
+      style={{ backgroundImage: `url(${pizza})` }}
     >
       <div className="md:flex justify-between w-full">
         <h1 className="text-2xl font-bold mb-8 text-center text-white drop-shadow-lg">Food Delivery Menu</h1>
         {/* Link to Cart */}
-        <div className="mt-8 text-center">
-          <Link to="/cart" className="text-lg font-bold text-white bg-green-500 px-4 py-2 rounded-lg animate-bounce">View Cart ({cart.length} ITEMS)</Link>
+        <div className="mt-8 mb-5 text-center">
+          <Link to="/cart" className="text-lg font-bold text-white bg-green-500 px-4 py-2 rounded-lg animate-bounce">
+            View Cart {cart.length} items
+          </Link>
         </div>
       </div>
       
@@ -126,7 +55,7 @@ const FoodDeliveryMenu: React.FC<CartProps> = ({ cart, setCart }) => {
                 key={meal.id}
                 className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition-transform duration-300"
               >
-                <Link to={`/meal/${meal.id}`} onClick={() => addToCart(meal, 1)}>
+                <Link to={`/meal/${meal.id}`} onClick={() => handleAddToCart(meal)}>
                   <img src={meal.image} alt={meal.name} className="w-full h-52 object-cover" />
                   <div className="p-4">
                     <h3 className="text-xl font-semibold mb-2">{meal.name}</h3>
@@ -140,7 +69,7 @@ const FoodDeliveryMenu: React.FC<CartProps> = ({ cart, setCart }) => {
           
           {/* Back button to show hotels list again */}
           <button
-            onClick={() => setSelectedHotel(null)} // Reset selected hotel to null to show the hotels list again
+            onClick={() => setSelectedHotel(null)}
             className="mt-8 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors"
           >
             Back to Hotels
@@ -166,27 +95,48 @@ const FoodDeliveryMenu: React.FC<CartProps> = ({ cart, setCart }) => {
   );
 };
 
-
-export const MealDetail: React.FC<{ addToCart: (meal: Meal, quantity: number) => void }> = ({ addToCart }) => {
+export const MealDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { hotels, loading, error, addToCart } = useAppContext();
   const [meal, setMeal] = useState<Meal | null>(null);
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
-  // Fetch meal details
   useEffect(() => {
-    const hotel = dummyHotels.find(hotel => hotel.meals.find(meal => meal.id === parseInt(id!)));
-    const selectedMeal = hotel?.meals.find(meal => meal.id === parseInt(id!));
-    setMeal(selectedMeal || null);
-  }, [id]);
+    if (!loading && !error) {
+      // Find the meal from the hotels data
+      if (id) {  // Ensure 'id' is not undefined
+        for (const hotel of hotels) {
+          console.log(hotel.meals.find(item =>item.id.toString() === id))
+          console.log(id);
+      
+          const foundMeal = hotel.meals.find(item => item.id.toString() === id);
+          if (foundMeal) {
+            setMeal(foundMeal);
+            break;  // Exit the loop once a match is found
+          }
+        }
+      } else {
+        console.error("ID is undefined. Please check the URL.");
+      }
+    }
+  }, [id, hotels, loading, error]);
+
+  if (loading) {
+    return <p className="text-center mt-16">Loading meal details...</p>;
+  }
+
+  if (error) {
+    return <p className="text-red-500 text-center mt-16">{error}</p>;
+  }
 
   if (!meal) {
-    return <p>Meal not found</p>;
+    return <p className="text-center mt-40 animate-bounce">Meal not found</p>;
   }
 
   const handleAddToCart = () => {
     addToCart(meal, quantity);
-    navigate('/foodDeliveryMenu');
+    navigate('/cart');
   };
 
   return (
@@ -257,13 +207,16 @@ export const MealDetail: React.FC<{ addToCart: (meal: Meal, quantity: number) =>
   );
 };
 
-
-
-export const Checkout: React.FC = () => (
-  <div className="p-4 mt-16 bg-white min-h-screen">
-    <h1 className="text-3xl font-bold mb-4">Checkout</h1>
-    <p>Thank you for your order!</p>
-  </div>
-);
-
-export default FoodDeliveryMenu
+export const Checkout: React.FC = () => {
+  const { cart, userInfo } = useAppContext();
+  console.log(cart);
+  // Implement your checkout logic here
+  return (
+    <div className="p-4 mt-16 bg-white min-h-screen">
+      <h1 className="text-3xl font-bold mb-4">Checkout</h1>
+      <p>Thank you for your order, {userInfo.email}!</p>
+      {/* Display order details as needed */}
+    </div>
+  );
+};
+export default FoodDeliveryMenu;

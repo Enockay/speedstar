@@ -1,55 +1,48 @@
+// src/Cart.tsx
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import { initiatePayment,sendCartToBackend } from "./apis/paymentApi"; // Placeholder API calls for payment
+import { initiatePayment, sendCartToBackend } from "./apis/paymentApi"; // Placeholder API calls for payment
 import { io } from "socket.io-client"; // For real-time websocket connection
-import { CartItem } from "./foodMenu";
+import { useAppContext } from "./Contexts/appContext";
 
-interface CartProps {
-  cart: CartItem[];
-  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
-}
-
-export const Cart: React.FC<CartProps> = ({ cart, setCart }) => {
+export const Cart: React.FC = () => {
   const navigate = useNavigate();
-  const [mpesaNumber, setMpesaNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [deliveryPoint, setDeliveryPoint] = useState("");
+  const { cart, updateQuantity, removeFromCart, userInfo, setUserInfo } = useAppContext();
+  const [mpesaNumber, setMpesaNumber] = useState(userInfo.mpesaNumber);
+  const [email, setEmail] = useState(userInfo.email);
+  const [deliveryPoint, setDeliveryPoint] = useState(userInfo.deliveryPoint);
   const [isLoading, setIsLoading] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState("");
   const [socket, setSocket] = useState<any>(null);
- 
+
   useEffect(() => {
     // Initialize WebSocket connection
     const newSocket = io("wss://your-websocket-server.com");
     setSocket(newSocket);
-  
+
     // Listen for real-time updates (e.g., payment status)
     newSocket.on("paymentStatusUpdate", (status: string) => {
       setPaymentStatus(status);
-      if(paymentStatus == "successful"){
+      if (status === "successful") {
         handleCheckout();
       }
       setIsLoading(false);
     });
-  
+
     // Cleanup function to close the WebSocket connection
     return () => {
       if (newSocket) {
-        newSocket.close(); // Ensure the socket connection is closed when the component unmounts
+        newSocket.close();
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
-  const updateQuantity = (mealId: number, amount: number) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.meal.id === mealId
-          ? { ...item, quantity: Math.max(1, item.quantity + amount) }
-          : item
-      )
-    );
-  };
+
+  // Update user info in context when local state changes
+  useEffect(() => {
+    setUserInfo({ mpesaNumber, email, deliveryPoint });
+  }, [mpesaNumber, email, deliveryPoint, setUserInfo]);
 
   const subtotal = cart.reduce(
     (acc, item) => acc + item.meal.price * item.quantity,
@@ -60,10 +53,6 @@ export const Cart: React.FC<CartProps> = ({ cart, setCart }) => {
     0
   );
   const totalAmountPayable = subtotal + totalDeliveryFee;
-
-  const removeFromCart = (mealId: number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.meal.id !== mealId));
-  };
 
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -85,6 +74,8 @@ export const Cart: React.FC<CartProps> = ({ cart, setCart }) => {
 
       if (response.status === 'success') {
         alert('Cart successfully sent to the backend!');
+        // Optionally, clear the cart after successful checkout
+        // setCart([]);
       } else {
         alert('Error during checkout. Please try again.');
       }
@@ -94,9 +85,11 @@ export const Cart: React.FC<CartProps> = ({ cart, setCart }) => {
       setIsLoading(false);
     }
   };
+
   const handlePayment = async () => {
-    if(!mpesaNumber ||!email ||!deliveryPoint){
-        setPaymentStatus("Kindly add delivery details");
+    if (!mpesaNumber || !email || !deliveryPoint) {
+      setPaymentStatus("Kindly add delivery details");
+      return;
     }
     setIsLoading(true);
     try {
@@ -161,7 +154,7 @@ export const Cart: React.FC<CartProps> = ({ cart, setCart }) => {
                           Delivery: Ksh {item.meal.deliveryFee}
                         </p>
                         <p className="text-gray-900 text-xs">
-                          hotel: {item.meal.hotel}
+                          Hotel: {item.meal.hotel}
                         </p>
                       </div>
                     </div>

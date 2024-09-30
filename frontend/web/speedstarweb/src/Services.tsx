@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // Importing images for each service from the assets folder
 import movers from "./assets/mover.jpg";
 import Delivery from "./assets/food delivery2.jpeg";
@@ -7,6 +8,11 @@ import percel from "./assets/perceldelivery.jpeg";
 import shooping from "./assets/supermarketshopping.jpg";
 
 const CategoriesProducts: React.FC = () => {
+    const navigate = useNavigate();
+
+    const navigatUser = ()=>{
+        navigate("/movers")
+    }
     return (
         // Main container with padding and background color
         <div className="w-full py-16 px-6 lg:px-24 bg-gray-100">
@@ -37,7 +43,7 @@ const CategoriesProducts: React.FC = () => {
                         <p className="text-gray-700 mb-6">
                             We handle residential and office relocations, providing trained personnel, packing materials, and transportation.
                         </p>
-                        <button className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300">
+                        <button onClick={navigatUser} className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300">
                             Get a Quote
                         </button>
                     </div>

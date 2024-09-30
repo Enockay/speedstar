@@ -1,8 +1,8 @@
 import React from 'react';
-import movers from './assets/movers.jpeg';
-import food from './assets/fooddelivery.jpg';
-import grocery from './assets/grocery.jpg';
-import parcel from './assets/perceldelivery2.jpeg';
+import movers from "./assets/mover.jpg";
+import Delivery from "./assets/food delivery2.jpeg";
+import groccery from "./assets/grocery.jpg";
+import percel from "./assets/perceldelivery.jpeg";
 import LocalPartnerships from './pertinerships';
 import DeliveryAreas from './DeliveryAreas';
 import background from './assets/speedstartbackground.jpeg';
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
             </div>
             {/* Service 2 */}
             <div className="flex flex-col items-center bg-white shadow-lg p-6 rounded-lg hover:shadow-2xl transition-shadow duration-300">
-              <img src={food} alt="Food Delivery" className="w-full h-64 object-cover mb-4 rounded-lg" />
+              <img src={Delivery} alt="Food Delivery" className="w-full h-64 object-cover mb-4 rounded-lg" />
               <h3 className="text-2xl font-semibold mb-2 text-gray-800">Food Delivery</h3>
               <p className="text-gray-700 text-center">
                 Quick and efficient food delivery from your favorite local restaurants, right to your doorstep.
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
             </div>
             {/* Service 3 */}
             <div className="flex flex-col items-center bg-white shadow-lg p-6 rounded-lg hover:shadow-2xl transition-shadow duration-300">
-              <img src={grocery} alt="Grocery Delivery" className="w-full h-64 object-cover mb-4 rounded-lg" />
+              <img src={groccery} alt="Grocery Delivery" className="w-full h-64 object-cover mb-4 rounded-lg" />
               <h3 className="text-2xl font-semibold mb-2 text-gray-800">Grocery Shopping</h3>
               <p className="text-gray-700 text-center">
                 Convenient grocery shopping and delivery from local supermarkets and stores, whenever you need it.
@@ -83,7 +83,7 @@ const Home: React.FC = () => {
             </div>
             {/* Service 4 */}
             <div className="flex flex-col items-center bg-white shadow-lg p-6 rounded-lg hover:shadow-2xl transition-shadow duration-300">
-              <img src={parcel} alt="Parcel Delivery" className="w-full h-64 object-cover mb-4 rounded-lg" />
+              <img src={percel} alt="Parcel Delivery" className="w-full h-64 object-cover mb-4 rounded-lg" />
               <h3 className="text-2xl font-semibold mb-2 text-gray-800">Parcel Delivery</h3>
               <p className="text-gray-700 text-center">
                 Safe and reliable parcel delivery services for sending and receiving packages quickly and securely.
