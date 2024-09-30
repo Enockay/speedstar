@@ -7,7 +7,7 @@ const menuSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['Breakfast', 'Lunch', 'Dinner', 'Snacks', 'Desserts'],
+        enum: ['Breakfast', 'Lunch', 'Dinner', 'Snacks', 'Desserts','Accompaniments'],
         required: true
     },
     price: {
@@ -18,7 +18,8 @@ const menuSchema = new mongoose.Schema({
     deliveryFee : {
         type: Number,
         required: true
-    }
+    },
+    hotel: String
 })
 
 menuSchema.set('toJSON', {
