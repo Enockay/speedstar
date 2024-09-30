@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {  useParams, useNavigate } from 'react-router-dom';
+import palaceFries from "./assets/Palace-fries-logo-_2_.svg";
 import { Link } from 'react-router-dom';
 import burger from './assets/burger.jpeg';
 import pancakes from './assets/pancakes.jpg';
 import meatSteak from './assets/meatstake.jpeg';
 import fries from './assets/fries2.jpeg';
 import icecream from './assets/ice cream .jpeg';
-import sunsethotel from "./assets/sunsetresort.jpeg";
 import pizza from "./assets/pizza2.jpeg";
 
 // Meal and Hotel interfaces
@@ -28,7 +28,7 @@ interface Hotel {
   meals: Meal[];
 }
 
-interface CartItem {
+export interface CartItem {
   meal: Meal;
   quantity: number;
 }
@@ -41,21 +41,20 @@ interface CartProps {
 const dummyHotels: Hotel[] = [
   {
     id: 1,
-    name: 'Sunset Hotel',
-    logo: sunsethotel,
+    name: 'Palace Fries',
+    logo: palaceFries,
     meals: [
-      { id: 1, name: 'Pancakes', category: 'Breakfast', price: 300, image: pancakes, deliveryFee: 50 ,hotel:'sunset Hotel'},
-      { id: 2, name: 'Burger', category: 'Lunch', price: 600, image: burger, deliveryFee: 60,hotel:"sunset Hotel" },
-      { id: 3, name: 'Steak', category: 'Dinner', price: 1200, image: meatSteak, deliveryFee: 70,hotel:"sunset Hotel" },
-      { id: 4, name: 'Fries', category: 'Snacks', price: 250, image: fries, deliveryFee: 30,hotel:"sunsethotel" },
-      { id: 5, name: 'Ice Cream', category: 'Desserts', price: 200, image: icecream, deliveryFee: 40,hotel:"sunset Hotel" },
+      { id: 1, name: 'Pancakes', category: 'Breakfast', price: 300, image: pancakes, deliveryFee: 50 ,hotel:'PalaceFries Hotel'},
+      { id: 2, name: 'Burger', category: 'Lunch', price: 600, image: burger, deliveryFee: 60,hotel:"PalaceFries Hotel" },
+      { id: 3, name: 'Steak', category: 'Dinner', price: 1200, image: meatSteak, deliveryFee: 70,hotel:"PalaceFries Hotel" },
+      { id: 4, name: 'Fries', category: 'Snacks', price: 250, image: fries, deliveryFee: 30,hotel:"PalaceFries Hotel" },
+      { id: 5, name: 'Ice Cream', category: 'Desserts', price: 200, image: icecream, deliveryFee: 40,hotel:"PalaceFries Hotel" },
     ],
   },
   // Other hotels...
 ];
 
-// Main Food Delivery Menu component
-const FoodDeliveryMenu: React.FC<CartProps>  = ({cart ,setCart}) => {
+const FoodDeliveryMenu: React.FC<CartProps> = ({ cart, setCart }) => {
   const [hotels, setHotels] = useState<Hotel[]>(dummyHotels); // Initial dummy data
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
   const [loading, setLoading] = useState(false);
@@ -99,38 +98,28 @@ const FoodDeliveryMenu: React.FC<CartProps>  = ({cart ,setCart}) => {
       className="mt-16 bg-cover min-h-screen md:p-8 p-4"
       style={{ backgroundImage: `url(${pizza})` }} // Dynamically set the background image here
     >
-      <div className='md:flex justify-between w-full'>
+      <div className="md:flex justify-between w-full">
         <h1 className="text-2xl font-bold mb-8 text-center text-white drop-shadow-lg">Food Delivery Menu</h1>
         {/* Link to Cart */}
         <div className="mt-8 text-center">
           <Link to="/cart" className="text-lg font-bold text-white bg-green-500 px-4 py-2 rounded-lg animate-bounce">View Cart ({cart.length} ITEMS)</Link>
         </div>
       </div>
+      
       {/* Display loader */}
       {loading && <p className="text-center text-white">Loading hotels and meals...</p>}
 
       {/* Display error message */}
       {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
-      {/* Hotel list */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {hotels.map((hotel) => (
-          <div
-            key={hotel.id}
-            className="border rounded-lg p-4 shadow-xl cursor-pointer hover:scale-105 transition-transform duration-300 bg-white"
-            onClick={() => selectHotel(hotel)}
-          >
-            <img src={hotel.logo} alt={hotel.name} className="w-24 h-24 mx-auto rounded-full mb-4" />
-            <h2 className="text-xl font-semibold text-center mb-2">{hotel.name}</h2>
-            <p className="text-center text-gray-600">Explore Meals</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Meals of the selected hotel */}
-      {selectedHotel && (
-        <div className="mt-8">
-          <h2 className="text-3xl font-semibold mb-6 text-orange-800 p-2 bg-zinc-50 rounded-lg text-center">{selectedHotel.name}'s Menu</h2>
+      {/* If a hotel is selected, show only its logo and menu */}
+      {selectedHotel ? (
+        <div className="text-center">
+          {/* Display selected hotel logo */}
+          <img src={selectedHotel.logo} alt={selectedHotel.name} className="w-24 h-24 mx-auto rounded-full mb-4" />
+          <h2 className="text-3xl font-semibold mb-6 text-orange-800 p-2 bg-zinc-50 rounded-lg">{selectedHotel.name}'s Menu</h2>
+          
+          {/* Meals of the selected hotel */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {selectedHotel.meals.map((meal) => (
               <div
@@ -148,11 +137,35 @@ const FoodDeliveryMenu: React.FC<CartProps>  = ({cart ,setCart}) => {
               </div>
             ))}
           </div>
+          
+          {/* Back button to show hotels list again */}
+          <button
+            onClick={() => setSelectedHotel(null)} // Reset selected hotel to null to show the hotels list again
+            className="mt-8 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors"
+          >
+            Back to Hotels
+          </button>
+        </div>
+      ) : (
+        // If no hotel is selected, show the list of hotels
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          {hotels.map((hotel) => (
+            <div
+              key={hotel.id}
+              className="border rounded-lg p-1 shadow-xl cursor-pointer hover:scale-105 transition-transform duration-300 bg-slate-300"
+              onClick={() => selectHotel(hotel)}
+            >
+              <img src={hotel.logo} alt={hotel.name} className="w-24 h-24 mx-auto rounded-full mb-4" />
+              <h2 className="text-xl font-semibold text-center mb-2">{hotel.name}</h2>
+              <p className="text-center text-gray-600">Explore Meals</p>
+            </div>
+          ))}
         </div>
       )}
     </div>
   );
 };
+
 
 export const MealDetail: React.FC<{ addToCart: (meal: Meal, quantity: number) => void }> = ({ addToCart }) => {
   const { id } = useParams<{ id: string }>();
@@ -185,7 +198,7 @@ export const MealDetail: React.FC<{ addToCart: (meal: Meal, quantity: number) =>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left side: Meal Image */}
         <div>
-          <img src={meal.image} alt={meal.name} className="w-full h-96 object-cover rounded-lg shadow-md mb-4" />
+          <img src={meal.image} alt={meal.name} className="w-auto h-96 object-cover rounded-lg shadow-md mb-4" />
         </div>
 
         {/* Right side: Meal Details */}
@@ -245,202 +258,7 @@ export const MealDetail: React.FC<{ addToCart: (meal: Meal, quantity: number) =>
 };
 
 
-export const Cart: React.FC<CartProps> = ({ cart, setCart }) => {
-  const navigate = useNavigate();
 
-  const [mpesaNumber, setMpesaNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [deliveryPoint, setDeliveryPoint] = useState("");
-
-  const updateQuantity = (mealId: number, amount: number) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.meal.id === mealId
-          ? { ...item, quantity: Math.max(1, item.quantity + amount) }
-          : item
-      )
-    );
-  };
-
-  const subtotal = cart.reduce(
-    (acc, item) => acc + item.meal.price * item.quantity,
-    0
-  );
-  const totalDeliveryFee = cart.reduce(
-    (acc, item) => acc + item.meal.deliveryFee * item.quantity,
-    0
-  );
-  const totalAmountPayable = subtotal + totalDeliveryFee;
-
-  const removeFromCart = (mealId: number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.meal.id !== mealId));
-  };
-
-  return (
-    <div className="md:p-4 p-2 mt-20 bg-white min-h-screen shadow-lg rounded-lg">
-      <h4 className="text-2xl text-center font-bold mb-6">Your Cart</h4>
-
-      {cart.length === 0 ? (
-        <p className="text-center text-gray-500">
-          Your cart is empty.{" "}
-          <Link to="/foodDeliveryMenu" className="text-blue-500 underline">
-            Go back to the menu
-          </Link>
-        </p>
-      ) : (
-        <>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-
-            {/* Cart Items */}
-            <div className="bg-gray-100 p-6 rounded-md shadow-md md:max-h-screen max-h-80 overflow-y-auto">
-              <ul className="space-y-6">
-                {cart.map((item, index) => (
-                  <li
-                    key={index}
-                    className="border-b pb-4 flex justify-between items-center"
-                  >
-                    <div className="flex items-center space-x-4">
-                      <img
-                        src={item.meal.image}
-                        alt={item.meal.name}
-                        className="w-20 h-20 rounded-md object-cover shadow-sm"
-                      />
-                      <div>
-                        <h3 className="text-xl font-semibold">
-                          {item.meal.name}
-                        </h3>
-                        <p className="text-gray-500">
-                          Ksh {item.meal.price} x {item.quantity}
-                        </p>
-                        <p className="text-gray-400">
-                          Delivery: Ksh {item.meal.deliveryFee}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <button
-                        className="bg-gray-300 px-2 py-1 rounded hover:bg-gray-400"
-                        onClick={() => updateQuantity(item.meal.id, -1)}
-                      >
-                        -
-                      </button>
-                      <span className="font-semibold">{item.quantity}</span>
-                      <button
-                        className="bg-gray-300 px-2 py-1 rounded hover:bg-gray-400"
-                        onClick={() => updateQuantity(item.meal.id, 1)}
-                      >
-                        +
-                      </button>
-                      <p className="text-lg font-semibold">
-                        Ksh {item.meal.price * item.quantity}
-                      </p>
-                      <button
-                        onClick={() => removeFromCart(item.meal.id)}
-                        className="ml-4 text-red-600 hover:text-red-800"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Price Summary */}
-              <div className="mt-6 text-right">
-                <h4 className="text-lg font-semibold">
-                  Subtotal: Ksh {subtotal.toFixed(2)}
-                </h4>
-                <h5 className="mt-1 text-gray-600">
-                  Delivery Fee: Ksh {totalDeliveryFee.toFixed(2)}
-                </h5>
-                <h4 className="text-xl font-bold mt-2">
-                  Total: Ksh {totalAmountPayable.toFixed(2)}
-                </h4>
-              </div>
-
-              <button
-                className="bg-blue-600 text-white py-2 px-4 mt-4 rounded-md font-semibold hover:bg-blue-700 w-full"
-                onClick={() => navigate("/foodDeliveryMenu")}
-              >
-                Add More Items
-              </button>
-            </div>
-
-            {/* Delivery and Payment Info */}
-            <div className="bg-gray-50 p-6 rounded-md shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Delivery Information</h3>
-
-              {/* M-Pesa Number */}
-              <div className="mb-4">
-                <label
-                  htmlFor="mpesa-number"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  M-Pesa Number
-                </label>
-                <input
-                  id="mpesa-number"
-                  value={mpesaNumber}
-                  onChange={(e) => setMpesaNumber(e.target.value)}
-                  type="text"
-                  placeholder="Enter your M-Pesa number"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              {/* Email */}
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  placeholder="Enter your email"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              {/* Delivery Point */}
-              <div className="mb-4">
-                <label
-                  htmlFor="delivery-point"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Delivery Point
-                </label>
-                <input
-                  id="delivery-point"
-                  value={deliveryPoint}
-                  onChange={(e) => setDeliveryPoint(e.target.value)}
-                  type="text"
-                  placeholder="Enter your delivery point"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              {/* Proceed Button */}
-              <button
-                className="bg-green-600 text-white py-2 px-4 rounded-md w-full font-semibold hover:bg-green-700"
-                onClick={() => alert('You will receive an M-Pesa prompt to complete the payment for Speed Star delivery.')}
-              >
-                Proceed to Pay
-              </button>
-              <p className="text-sm text-gray-600 mt-2 text-center">
-                You will receive an M-Pesa prompt to pay for Speed Star delivery upon clicking 'Proceed to Pay'.
-              </p>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
 export const Checkout: React.FC = () => (
   <div className="p-4 mt-16 bg-white min-h-screen">
     <h1 className="text-3xl font-bold mb-4">Checkout</h1>

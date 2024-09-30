@@ -9,7 +9,7 @@ import CategoriesProducts from './Services';
 import FAQ from './FAQ';
 import FoodDeliveryMenu from './foodMenu';
 import { Checkout } from './foodMenu';
-import { Cart } from './foodMenu';
+import { Cart } from './Cart';
 import { MealDetail } from './foodMenu';
 import { Meal } from './foodMenu';
 
