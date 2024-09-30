@@ -18,11 +18,16 @@ const Header: React.FC = () => {
     <>
       {/* Header */}
       <header className="fixed top-0 left-0 w-full bg-orange-900 text-white shadow-lg z-50">
-        <div className="container mx-auto md:px-6 px-3 py-4 flex justify-between items-center">
+        <div className="container mx-auto md:px-6 px-3 py-4 flex justify-between">
           {/* Logo */}
-          <div className="flex items-center">
-            <img src={logo} alt="Speedstar Logo" className="w-12 h-12 mr-3" />
-            <span className="md:text-2xl text-xl font-extrabold tracking-wide">
+          <div className="flex ">
+            <img
+              src={logo}
+              alt="Speedstar Logo"
+              className="md:w-12 md:h-12 h-12 w-12  mr-3 transform scale-150 hover:scale-125 transition-transform duration-300"
+            />
+
+            <span className="md:text-2xl hidden md:block text-xl font-extrabold tracking-wide">
               Speedstar Delivery
             </span>
           </div>
@@ -31,17 +36,15 @@ const Header: React.FC = () => {
           <nav className="hidden md:flex space-x-6 text-lg font-medium">
             <a
               href="/"
-              className={`${
-                isActiveLink("/") ? "text-yellow-300" : "hover:text-yellow-300"
-              } transition duration-300`}
+              className={`${isActiveLink("/") ? "text-yellow-300" : "hover:text-yellow-300"
+                } transition duration-300`}
             >
               Home
             </a>
             <a
               href="/Service"
-              className={`${
-                isActiveLink("/Service") ? "text-yellow-300" : "hover:text-yellow-300"
-              } transition duration-300`}
+              className={`${isActiveLink("/Service") ? "text-yellow-300" : "hover:text-yellow-300"
+                } transition duration-300`}
             >
               Services
             </a>
@@ -53,17 +56,15 @@ const Header: React.FC = () => {
             </a>
             <a
               href="/AboutUs"
-              className={`${
-                isActiveLink("/AboutUs") ? "text-yellow-300" : "hover:text-yellow-300"
-              } transition duration-300`}
+              className={`${isActiveLink("/AboutUs") ? "text-yellow-300" : "hover:text-yellow-300"
+                } transition duration-300`}
             >
               About Us
             </a>
             <a
               href="/FAQ"
-              className={`${
-                isActiveLink("/FAQ") ? "text-yellow-300" : "hover:text-yellow-300"
-              } transition duration-300`}
+              className={`${isActiveLink("/FAQ") ? "text-yellow-300" : "hover:text-yellow-300"
+                } transition duration-300`}
             >
               FAQ
             </a>
@@ -113,17 +114,15 @@ const Header: React.FC = () => {
             <nav className="px-6 py-4 space-y-4">
               <a
                 href="/"
-                className={`${
-                  isActiveLink("/") ? "text-yellow-300" : "hover:text-yellow-300"
-                } block transition duration-300`}
+                className={`${isActiveLink("/") ? "text-yellow-300" : "hover:text-yellow-300"
+                  } block transition duration-300`}
               >
                 Home
               </a>
               <a
                 href="/Service"
-                className={`${
-                  isActiveLink("/Service") ? "text-yellow-300" : "hover:text-yellow-300"
-                } block transition duration-300`}
+                className={`${isActiveLink("/Service") ? "text-yellow-300" : "hover:text-yellow-300"
+                  } block transition duration-300`}
               >
                 Services
               </a>
@@ -135,17 +134,15 @@ const Header: React.FC = () => {
               </a>
               <a
                 href="/AboutUs"
-                className={`${
-                  isActiveLink("/AboutUs") ? "text-yellow-300" : "hover:text-yellow-300"
-                } block transition duration-300`}
+                className={`${isActiveLink("/AboutUs") ? "text-yellow-300" : "hover:text-yellow-300"
+                  } block transition duration-300`}
               >
                 About Us
               </a>
               <a
                 href="/FAQ"
-                className={`${
-                  isActiveLink("/FAQ") ? "text-yellow-300" : "hover:text-yellow-300"
-                } block transition duration-300`}
+                className={`${isActiveLink("/FAQ") ? "text-yellow-300" : "hover:text-yellow-300"
+                  } block transition duration-300`}
               >
                 FAQ
               </a>

@@ -22,7 +22,7 @@ const Home: React.FC = () => {
               SPEEDSTAR DELIVERY SERVICES
             </h1>
             <p className="text-lg md:text-2xl font-medium text-sky-950 mb-8 max-w-3xl">
-              Fast and reliable delivery solutions for every need – Movers, Food Delivery, Grocery, and Parcels. We get it done quickly and safely!
+              Fast and reliable delivery solutions for every need – Movers, Food Delivery, Grocery shoping, Parcels Deliveries  and supermarket shopping. We get it done quickly and safely for You!
             </p>
             <div className="flex space-x-4">
               <a
