@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+var cors = require('cors')
 require('dotenv').config()
 var express = require('express');
 var path = require('path');
@@ -17,6 +18,29 @@ var app = express();
 var mongoose = require('mongoose');
 const hotelRouter = require('./routes/hotels');
 var MONGODB_URL = process.env.MONGODB_URL
+
+// Define allowed origins
+const allowedOrigins = [
+  'http://localhost:5173',  // Local development frontend
+  'http://localhost:5174',
+  'http://example.com',     // Production frontend
+  'https://speedstar.vercel.app/'
+];
+
+// CORS configuration
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      // Allow requests with no origin (like mobile apps or Postman)
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type, Authorization',
+  credentials: true
+}));
 
 mongoose.connect(MONGODB_URL)
         .then(() => {
