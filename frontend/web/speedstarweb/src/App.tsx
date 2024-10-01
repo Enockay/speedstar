@@ -15,6 +15,7 @@ import 'leaflet/dist/leaflet.css';
 import TrackOrder from './TrackOrder';
 import Services from './movers/services';
 import QuoteForm from './movers/GetQoute';
+import GroceryOrder from './GrocceryDelivery';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/track-order" element={<TrackOrder />} />
             <Route path="/movers" element={<Services />} />
             <Route path="/qoute-form" element={<QuoteForm/>} />
+            <Route path="/GrocceryDelivery" element={<GroceryOrder/>} />
             {/* Add other routes as needed */}
           </Routes>
           <Footer />

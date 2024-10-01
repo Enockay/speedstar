@@ -24,7 +24,7 @@ const allowedOrigins = [
   'http://localhost:5173',  // Your frontend
   'http://localhost:5174',  // Another frontend port
   'http://example.com',     // Production frontend
-  'https://speedstar.vercel.app/'
+  'https://speedstar.vercel.app'
 ];
 // CORS configuration
 app.use(cors({

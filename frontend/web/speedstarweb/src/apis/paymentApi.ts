@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://your-backend-api.com";  // Replace with your backend URL
+const API_BASE_URL = "https://generator-long-tree-8710.fly.dev";  // Replace with your backend URL
 
 export const initiatePayment = async (paymentData: {
   amount: number;
@@ -54,7 +54,7 @@ export const sendCartToBackend = async (cartData: {
     deliveryPoint: string;
   }) => {
     try {
-      const response = await fetch('https://your-backend-api-url.com/cart', {
+      const response = await fetch('https://generator-long-tree-8710.fly.dev/cart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -85,9 +85,11 @@ const CategoriesProducts: React.FC = () => {
                         <p className="text-gray-700 mb-6">
                             Need groceries? We shop at local stalls and supermarkets for fresh produce and essentials.
                         </p>
+                        <a href='/GrocceryDelivery'>
                         <button className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
                             Shop Groceries
                         </button>
+                        </a>
                     </div>
                 </div>
 

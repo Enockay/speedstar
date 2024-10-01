@@ -18,7 +18,7 @@ export const Cart: React.FC = () => {
 
   useEffect(() => {
     // Initialize WebSocket connection
-    const newSocket = io("wss://your-websocket-server.com");
+    const newSocket = io("wss://generator-long-tree-8710.fly.dev/");
     setSocket(newSocket);
 
     // Listen for real-time updates (e.g., payment status)
