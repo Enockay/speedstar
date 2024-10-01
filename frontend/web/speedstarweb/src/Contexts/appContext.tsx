@@ -87,7 +87,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const fetchHotels = async () => {
     try {
       setLoading(true);
-      const response = await axios.get<Hotel[]>('http://localhost:3001/hotels', {
+      const response = await axios.get<Hotel[]>('https://generator-long-tree-8710.fly.dev/hotels', {
         withCredentials: false,
       });
       setHotels(response.data);
