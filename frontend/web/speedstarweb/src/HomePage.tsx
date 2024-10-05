@@ -7,6 +7,7 @@ import LocalPartnerships from './pertinerships';
 import DeliveryAreas from './DeliveryAreas';
 import background from './assets/speedstartbackground.jpeg';
 import HowItWorks from './HowItWorks';
+import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
@@ -25,18 +26,16 @@ const Home: React.FC = () => {
               Fast and reliable delivery solutions for every need – Movers, Food Delivery, Grocery shoping, Parcels Deliveries  and supermarket shopping. We get it done quickly and safely for You!
             </p>
             <div className="flex space-x-4">
-              <a
-                href="/Service"
+              <Link to="/Service"
                 className="bg-green-300 hover:bg-yellow-600 text-slate-900 px-8 py-4 rounded-full font-semibold shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out"
               >
                 Book Now
-              </a>
-              <a
-                href="/FAQ"
+              </Link>
+              <Link to="/FAQ"
                 className="bg-white hover:bg-gray-200 text-gray-800 px-8 py-4 rounded-full font-semibold shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>

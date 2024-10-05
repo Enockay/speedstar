@@ -23,8 +23,9 @@ var MONGODB_URL = process.env.MONGODB_URL
 const allowedOrigins = [
   'http://localhost:5173',  // Your frontend
   'http://localhost:5174',  // Another frontend port
-  'http://example.com',     // Production frontend
-  'https://speedstar.vercel.app'
+  'https://speedstarweb.fly.dev',     // Production frontend
+  'https://speedstar.vercel.app',
+  'https://www.speedstardeliveries.com',
 ];
 // CORS configuration
 app.use(cors({

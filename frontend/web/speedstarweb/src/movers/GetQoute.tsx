@@ -5,6 +5,7 @@ import axios from 'axios';
 interface FormData {
   name: string;
   email: string;
+  phoneNumber: string; // Add phone number to the FormData interface
   movingDate: string;
   fromLocation: string;
   toLocation: string;
@@ -16,6 +17,7 @@ const QuoteForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phoneNumber: '', // Initialize the phone number state
     movingDate: '',
     fromLocation: '',
     toLocation: '',
@@ -34,12 +36,17 @@ const QuoteForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    axios.post('/api/quotes', { ...formData, serviceType }) // Send serviceType along with the form data
+
+    axios.post('https://your-backend-url.com/api/quotes', { // Replace with your real backend URL
+      ...formData,
+      serviceType,
+    })
       .then(() => {
         setMessage('Your quote request has been submitted!');
         setFormData({
           name: '',
           email: '',
+          phoneNumber: '',
           movingDate: '',
           fromLocation: '',
           toLocation: '',
@@ -82,6 +89,18 @@ const QuoteForm = () => {
                 onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="Enter your email address"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="block text-gray-700">Phone Number</label>
+              <input
+                type="text"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter your phone number"
                 required
               />
             </div>

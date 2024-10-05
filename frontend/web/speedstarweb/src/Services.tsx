@@ -6,7 +6,7 @@ import Delivery from "./assets/food delivery2.jpeg";
 import groccery from "./assets/grocery.jpg";
 import percel from "./assets/perceldelivery.jpeg";
 import shooping from "./assets/supermarketshopping.jpg";
-
+import { Link } from 'react-router-dom';
 const CategoriesProducts: React.FC = () => {
     const navigate = useNavigate();
 
@@ -64,9 +64,9 @@ const CategoriesProducts: React.FC = () => {
                         <p className="text-gray-700 mb-6">
                             Speedstar delivers meals from local hotels and restaurants to your doorstep.
                         </p>
-                        <a href="/foodDeliveryMenu" className="block w-full bg-red-500 text-white text-center py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300">
+                        <Link to="/foodDeliveryMenu" className="block w-full bg-red-500 text-white text-center py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300">
                             Order now
-                        </a>
+                        </Link>
                     </div>
                 </div>
 
@@ -85,11 +85,11 @@ const CategoriesProducts: React.FC = () => {
                         <p className="text-gray-700 mb-6">
                             Need groceries? We shop at local stalls and supermarkets for fresh produce and essentials.
                         </p>
-                        <a href='/GrocceryDelivery'>
+                        <Link to='/GrocceryDelivery'>
                         <button className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
                             Shop Groceries
                         </button>
-                        </a>
+                        </Link>
                     </div>
                 </div>
 
