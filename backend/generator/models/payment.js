@@ -6,7 +6,7 @@ const paymentSchema = new mongoose.Schema({
     email: { type: String, required: true },
     deliveryPoint: { type: String, required: true },
     transactionId: { type: String, required: true },
-    status: { type: String,enum: ['Pending', 'Confirmed'] ,default: 'Pending' },
+    status: { type: String ,default: 'Pending' },
     createdAt: { type: Date, default: Date.now },
    });
 

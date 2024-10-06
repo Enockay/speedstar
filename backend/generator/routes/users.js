@@ -14,7 +14,7 @@ usersRouter.get('/', async (req, res) => {
 })
 
 usersRouter.post('/register', async (req,res) => {
-  const {firstName, secondName, email, password, phone, address,role} = req.body
+  const {firstName, secondName, email, password, phone, address,role,bookings} = req.body
 
   try {
     const date = new Date()
@@ -33,6 +33,7 @@ usersRouter.post('/register', async (req,res) => {
       password : passwordHash,
       phone,
       address,
+      bookings,
       createdAt: date,
       role
     })

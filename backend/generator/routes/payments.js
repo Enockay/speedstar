@@ -1,6 +1,7 @@
 const paymentRouter = require('express').Router()
 const axios = require('axios')
 const Payment = require('../models/payment')
+const { lipaNaMpesaOnline, CallBack } = require('../utils/paymentHelper')
 
 // Get all payments
 paymentRouter.get('/', async (req, res) => {
@@ -51,13 +52,10 @@ paymentRouter.get('/', async (req, res) => {
 
   
 paymentRouter.post('/initiate', async (req,res) => {
-    const { amount, mpesaNumber, email, deliveryPoint } = req.body
+    const { phoneNumber, amount, email, deliveryPoint } = req.body
 
     try {
-        const paymentResponse = await axios.post('https://mpesa-api.com/pay', {
-            amount,
-            mpesaNumber
-        })
+        const paymentResponse = await lipaNaMpesaOnline(phoneNumber, amount)
 
         const transactionId = paymentResponse.data.transactionId
 
@@ -95,6 +93,32 @@ paymentRouter.get('/confirm', async (req, res) => {
         console.error('Payment confirmation error:', error);
         res.status(500).json({ error: 'Payment confirmation failed' });
         }
+})
+
+paymentRouter.post('/callback', async (req,res) => {
+    try {
+        const result = await CallBack(req.body)
+
+        if (result.success) {
+            const {transactionId, orderId,amountPaid, phoneNumber, status} = result.data
+
+            await Payment.findOneAndUpdate(
+                {transactionId: transactionId},
+                {
+                    status: 'confirmed',
+                    mpesaNumber: phoneNumber,
+                    amount: amountPaid
+                }
+            )
+
+            res.status(200).json({msg: 'Payment confirmed'})
+        } else {
+            res.status(400).json({msg: 'Payment failed', status: result.data.status})
+        }
+    } catch (error) {
+        console.error('Error processing the callback: ',error)
+        res.status(500).json({msg: 'Internal server error'})
+    }
 })
 
 
