@@ -10,7 +10,7 @@ import {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white p-6">
+    <footer className="bg-orange-900 text-white p-6">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Company Information */}
         <div className="mb-4 md:mb-0">

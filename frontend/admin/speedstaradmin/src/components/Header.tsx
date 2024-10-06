@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   }, [isDropdownOpen]);
 
   return (
-    <header className="bg-gray-900 text-white p-4 flex items-center justify-between relative">
+    <header className="bg-orange-900 text-white p-5 flex items-center justify-between relative">
       {/* Left Section: Logo and Menu Button (on small screens) */}
       <div className="flex items-center">
         {/* Menu Button for Small Screens */}
@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
         {/* Logo and Company Name */}
         <div className="flex items-center">
           <img src={companyLogo} alt="Company Logo" className="h-8 w-8 mr-2" />
-          <span className="text-lg font-semibold">Admin</span>
+          <span className="text-xl font-semibold">Admin</span>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
           aria-label="Open Menu"
         >
           <svg 
-            className="h-6 w-6 " 
+            className="h-10 w-10 " 
             fill="none" 
             stroke="currentColor" 
             viewBox="0 0 24 24" 

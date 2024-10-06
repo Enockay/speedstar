@@ -11,6 +11,7 @@ import PaymentManagement from './pages/PaymentManagement';
 import AnalyticsDashboard from './pages/AnalyticsDashboard';
 import AdminLogs from './pages/AdminLogs';
 import Hotels from "./pages/Hotels";
+import DashboardHome from './pages/Dashboard';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
 
         {/* Admin Dashboard and Nested Routes */}
         <Route path="/admin" element={<AdminDashboard />}>
+          <Route path="dashboard" element={<DashboardHome />} />
           <Route path="users" element={<UserManagement />} />
           <Route path="partners" element={<PartnerManagement />} />
           <Route path="bookings" element={<BookingManagement />} />

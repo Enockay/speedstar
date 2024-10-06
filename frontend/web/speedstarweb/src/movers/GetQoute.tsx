@@ -37,7 +37,7 @@ const QuoteForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    axios.post('https://your-backend-url.com/api/quotes', { // Replace with your real backend URL
+    axios.post('http://localhost:3001/quotes', { // Replace with your real backend URL
       ...formData,
       serviceType,
     })

@@ -158,6 +158,15 @@ const AdminHotelManager: React.FC = () => {
                               onBlur={(e) => handleUpdateMeal(hotel.id, meal.id, { price: parseFloat(e.target.value) })}
                             />
                           </p>
+                          <p>
+                            Delivery Fee: ksh
+                            <input
+                              type="number"
+                              className="border rounded-md p-1 w-16"
+                              defaultValue={meal.deliveryFee}
+                              onBlur={(e) => handleUpdateMeal(hotel.id, meal.id, { deliveryFee: parseFloat(e.target.value) })}
+                            />
+                          </p>
                           {meal.image && <img src={meal.image} alt={meal.name} className="w-16 h-16 object-cover" />}
                         </div>
                         <div>

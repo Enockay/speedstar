@@ -10,9 +10,9 @@ import {
   FaChartBar,
   FaFileAlt,
   FaCog,
-  FaHome,
+  FaHome
 } from 'react-icons/fa';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+import { MdKeyboardArrowDown ,MdHotel } from 'react-icons/md';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, closeSidebar }) => {
           ></div>
 
           {/* Sidebar */}
-          <aside className="relative w-64 bg-gray-800 text-white">
+          <aside className="relative w-64 bg-orange-950 text-white">
             {/* Close Button */}
             <button 
               className="absolute top-4 right-4 focus:outline-none" 
@@ -162,6 +162,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, closeSidebar }) => {
                   </NavLink>
                 </li>
                 <li>
+              <NavLink
+                to="/admin/hotel"
+                className={({ isActive }) =>
+                  `flex items-center p-2 rounded hover:bg-gray-700 ${
+                    isActive ? 'bg-gray-700' : ''
+                  }`
+                }
+              >
+                <MdHotel className="mr-3" />
+               Hotel Management
+              </NavLink>
+            </li>
+                <li>
                   <NavLink
                     to="/admin/reviews-reports"
                     className={({ isActive }) =>
@@ -250,7 +263,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, closeSidebar }) => {
       )}
 
       {/* Static Sidebar for Desktop */}
-      <aside className="hidden md:block w-64 bg-gray-800 text-white">
+      <aside className="hidden md:block w-64 bg-orange-950 text-white">
         <nav className="p-6">
           <ul className="space-y-2">
             <li>
@@ -353,7 +366,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, closeSidebar }) => {
                   }`
                 }
               >
-                <FaDollarSign className="mr-3" />
+                <MdHotel className="mr-3" />
                Hotel Management
               </NavLink>
             </li>
