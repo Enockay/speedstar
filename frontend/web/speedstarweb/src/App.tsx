@@ -20,23 +20,23 @@ import GroceryOrder from './GrocceryDelivery';
 function App() {
   return (
     <AppProvider>
-      <Router>
+      <Router basename="/">
         <div>
           <Header />
           <Routes>
             {/* Define the home route */}
             <Route path="/" element={<Home />} />
-            <Route path="/AboutUs" element={<AboutUs />} />
-            <Route path="/Service" element={<CategoriesProducts />} />
-            <Route path="/FAQ" element={<FAQ />} />
-            <Route path="/foodDeliveryMenu" element={<FoodDeliveryMenu />} />
-            <Route path="/meal/:id" element={<MealDetail />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/track-order" element={<TrackOrder />} />
-            <Route path="/movers" element={<Services />} />
-            <Route path="/qoute-form" element={<QuoteForm/>} />
-            <Route path="/GrocceryDelivery" element={<GroceryOrder/>} />
+            <Route path="AboutUs" element={<AboutUs />} />
+            <Route path="Service" element={<CategoriesProducts />} />
+            <Route path="FAQ" element={<FAQ />} />
+            <Route path="foodDeliveryMenu" element={<FoodDeliveryMenu />} />
+            <Route path="meal/:id" element={<MealDetail />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="track-order" element={<TrackOrder />} />
+            <Route path="movers" element={<Services />} />
+            <Route path="qoute-form" element={<QuoteForm/>} />
+            <Route path="GrocceryDelivery" element={<GroceryOrder/>} />
             {/* Add other routes as needed */}
           </Routes>
           <Footer />
