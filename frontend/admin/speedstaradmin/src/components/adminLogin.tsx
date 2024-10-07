@@ -21,7 +21,7 @@ const AdminLogin: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/users/login', { email, password });
+      const response = await axios.post('https://generator-long-tree-8710.fly.dev/users/login', { email, password });
 
       // Handle successful login
       const { token } = response.data;

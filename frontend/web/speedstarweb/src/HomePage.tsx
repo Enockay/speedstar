@@ -17,26 +17,58 @@ const Home: React.FC = () => {
         className="relative w-full h-screen bg-cover bg-center"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <div className="relative bg-gradient-to-b from-yellow-500 to-orange-500 opacity-65">
-          <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center font-bold px-6 md:px-12">
-            <h1 className=" animate-pulse text-3xl md:text-6xl font-extrabold text-yellow-200 mb-6 drop-shadow-lg">
+        <div className="relative bg-gradient-to-b from-yellow-600 to-orange-900 opacity-85">
+          <div className="relative z-10 flex mb-5 flex-col items-center justify-center h-screen text-center font-bold px-6 md:px-12">
+            <h1 className="animate-bounce hidden text-xl md:text-6xl font-extrabold text-yellow-100 shadow-2xl p-3 mb-6 drop-shadow-lg">
               SPEEDSTAR DELIVERY SERVICES
             </h1>
-            <p className="text-lg md:text-2xl font-medium text-sky-950 mb-8 max-w-3xl">
-              Fast and reliable delivery solutions for every need – Movers, Food Delivery, Grocery shoping, Parcels Deliveries  and supermarket shopping. We get it done quickly and safely for You!
+            <p className="text-lg md:text-2xl font-semibold text-white mt-8 ">
+              <span className="block md:text-4xl text-2xl font-extrabold text-yellow-400 md:mb-5 mb-1">
+                Welcome to Speedstar Deliveries: We Are the Errand Boys!
+              </span>
+              <span>
+                Your trusted partner for <span className="font-bold text-yellow-200">fast</span>,
+                <span className="font-bold text-yellow-200"> secure</span>, and <span className="font-bold text-yellow-200">affordable</span>
+                delivery solutions across the city.
+              </span>
+              <br />
+              <span>
+                Whether you need <span className="font-bold text-yellow-200">Movers</span>,
+                <span className="font-bold text-yellow-200">Food Delivery</span>,
+                <span className="font-bold text-yellow-200">Grocery Shopping</span>,
+                <span className="font-bold text-yellow-200">Parcel Deliveries</span>, or
+                <span className="font-bold text-yellow-200">Supermarket Shopping</span> —
+                we’ve got you covered.
+              </span>
+              <br />
+              <span className="hidden md:block font-semibold italic text-yellow-300 mt-2 ">
+                "We promise same-day delivery, real-time tracking, and unbeatable customer support."
+              </span>
+              <span className="block mt-2 text-yellow-100">
+                Join thousands of happy customers who trust us to get their errands done, hassle-free.
+              </span>
             </p>
-            <div className="flex space-x-4">
-              <Link to="/Service"
+
+            <div className="flex space-x-4 mt-3 mb-2">
+              <Link
+                to="/Service"
                 className="bg-green-300 hover:bg-yellow-600 text-slate-900 px-8 py-4 rounded-full font-semibold shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out"
               >
                 Book Now
               </Link>
-              <Link to="/FAQ"
+              <Link
+                to="/FAQ"
                 className="bg-white hover:bg-gray-200 text-gray-800 px-8 py-4 rounded-full font-semibold shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out"
               >
                 Learn More
               </Link>
             </div>
+
+            <p className="md:mt-7 mt-2 text-sm md:text-xl text-white">
+              Ready for Speedstar’s quick and reliable services? <br />
+              <span className="text-yellow-200">Book Now</span> to schedule your delivery, or <span className="text-yellow-200">Learn More</span> to see how we can help with all your needs!
+            </p>
+
           </div>
         </div>
       </section>
@@ -97,7 +129,7 @@ const Home: React.FC = () => {
       </svg>
 
       <LocalPartnerships />
-      <HowItWorks/>
+      <HowItWorks />
       <DeliveryAreas />
     </div>
   );

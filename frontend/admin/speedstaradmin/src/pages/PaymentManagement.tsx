@@ -16,7 +16,7 @@ const PaymentManagement: React.FC = () => {
   const [selectedPayment, setSelectedPayment] = useState<Payment | null>(null); // For handling payment details in a modal
 
   useEffect(() => {
-    axios.get('http://localhost:3001/payments').then((response) => {
+    axios.get('https://generator-long-tree-8710.fly.dev/payments').then((response) => {
       const fetchedPayments = response.data.map((payment: any) => ({
         ...payment,
         status: payment.status === 'Pending' || payment.status === 'Confirmed' ? payment.status : 'Pending', // Ensure valid status
@@ -30,7 +30,7 @@ const PaymentManagement: React.FC = () => {
   };
 
   const handleStatusUpdate = (id: string, newStatus: 'Pending' | 'Confirmed') => {
-    axios.patch(`http://localhost:3001/payments/${id}`, { status: newStatus })
+    axios.patch(`https://generator-long-tree-8710.fly.dev/payments/${id}`, { status: newStatus })
       .then(() => {
         setPayments(payments.map(payment => 
           payment.id === id ? { ...payment, status: newStatus } : payment

@@ -11,8 +11,9 @@ hotelRouter.get('/', async (req,res) => {
     res.status(200).json(hotels)
 })
 
-hotelRouter.patch('/:hotelId', upload.single('logo'), async (req, res) => {
+hotelRouter.patch('/:hotelId/logo', upload.single('file'), async (req, res) => {
     const { hotelId } = req.params;
+    console.log(hotelId);
     const { name } = req.body;
     try {
     let updatedFields = { name };
@@ -31,13 +32,13 @@ hotelRouter.patch('/:hotelId', upload.single('logo'), async (req, res) => {
 
     } catch (error) {
 
-    console.error('Error updating hotel:', error);
+    console.log('Error updating hotel:', error);
 
     res.status(500).json({ msg: 'Error updating hotel' });
     }
    });
 
-   hotelRouter.patch('/:hotelId/meals/:mealId', upload.single('image'), async (req, res) => {
+   hotelRouter.patch('/:hotelId/meals/:mealId', upload.single('file'), async (req, res) => {
     const { hotelId, mealId } = req.params;
 
     const { name, price, category, deliveryFee } = req.body;

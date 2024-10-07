@@ -13,6 +13,7 @@ var partnersRouter = require('./routes/partners')
 var reviewRouter = require('./routes/reviews')
 var paymentRouter = require('./routes/payments')
 var cartRouter = require('./routes/carts')
+var images = require("./routes/pictures");
 
 
 var app = express();
@@ -26,6 +27,7 @@ const allowedOrigins = [
   'https://speedstarweb.fly.dev',     // Production frontend
   'https://speedstar.vercel.app',
   'https://www.speedstardeliveries.com',
+  'https://speedstaradmin.fly.dev'
 ];
 // CORS configuration
 app.use(cors({
@@ -65,7 +67,8 @@ app.use('/partners', partnersRouter)
 app.use('/reviews', reviewRouter)
 app.use('/hotels', hotelRouter)
 app.use('/payments', paymentRouter)
-app.use('/carts', cartRouter)
+app.use('/carts', cartRouter);
+app.use("/images",images)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

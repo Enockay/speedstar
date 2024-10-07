@@ -16,6 +16,7 @@ import TrackOrder from './TrackOrder';
 import Services from './movers/services';
 import QuoteForm from './movers/GetQoute';
 import GroceryOrder from './GrocceryDelivery';
+import SuperMarket from './superMarket';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="movers" element={<Services />} />
             <Route path="qoute-form" element={<QuoteForm/>} />
             <Route path="GrocceryDelivery" element={<GroceryOrder/>} />
+            <Route path="Supermarket" element={<SuperMarket/>} />
             {/* Add other routes as needed */}
           </Routes>
           <Footer />

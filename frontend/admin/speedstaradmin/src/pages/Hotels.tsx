@@ -31,7 +31,8 @@ const AdminHotelManager: React.FC = () => {
 
   const fetchHotels = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/hotels');
+      const response = await axios.get('https://generator-long-tree-8710.fly.dev/hotels');
+      console.log(response.data)
       setHotels(response.data);
       setLoading(false);
     } catch (err) {
@@ -42,7 +43,7 @@ const AdminHotelManager: React.FC = () => {
 
   const handleDeleteHotel = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:3001/api/hotels/${id}`);
+      await axios.delete(`https://generator-long-tree-8710.fly.dev/hotels/${id}`);
       setHotels(hotels.filter((hotel) => hotel.id !== id));
     } catch (err) {
       setError('Failed to delete hotel');
@@ -51,7 +52,7 @@ const AdminHotelManager: React.FC = () => {
 
   const handleUpdateMeal = async (hotelId: string, mealId: string, updatedMeal: Partial<Meal>) => {
     try {
-      await axios.patch(`http://localhost:3001/api/hotels/${hotelId}/meals/${mealId}`, updatedMeal);
+      await axios.patch(`https://generator-long-tree-8710.fly.dev/hotels/${hotelId}/meals/${mealId}`, updatedMeal);
       fetchHotels(); // Refresh hotel list with updated data
     } catch (err) {
       setError('Failed to update meal');
@@ -60,7 +61,7 @@ const AdminHotelManager: React.FC = () => {
 
   const handleUpdateHotel = async (hotelId: string, updatedHotel: Partial<Hotel>) => {
     try {
-      await axios.patch(`/api/hotels/${hotelId}`, updatedHotel);
+      await axios.patch(`https://generator-long-tree-8710.fly.dev/hotels/${hotelId}`, updatedHotel);
       fetchHotels();
     } catch (err) {
       setError('Failed to update hotel');
@@ -74,11 +75,12 @@ const AdminHotelManager: React.FC = () => {
     const formData = new FormData();
     formData.append('file', file);
 
+
     try {
       if (uploadType === 'logo') {
-        await axios.patch(`http://localhost:3001/api/hotels/${hotelId}/logo`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+        await axios.patch(`https://generator-long-tree-8710.fly.dev/hotels/${hotelId}/logo`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
       } else if (uploadType === 'mealImage' && mealId) {
-        await axios.patch(`http://localhost:3001/api/hotels/${hotelId}/meals/${mealId}/image`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+        await axios.patch(`https://generator-long-tree-8710.fly.dev/hotels/${hotelId}/meals/${mealId}/image`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
       }
       fetchHotels(); // Refresh data
     } catch (err) {

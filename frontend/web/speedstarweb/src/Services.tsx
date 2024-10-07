@@ -108,9 +108,11 @@ const CategoriesProducts: React.FC = () => {
                         <p className="text-gray-700 mb-6">
                             Supermarket shopping made easy – we pick up and deliver your items straight from leading supermarkets.
                         </p>
-                        <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
-                            Order Supermarket Delivery
+                        <Link to='/SuperMarket'>
+                        <button className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
+                         Place Shopping Order
                         </button>
+                        </Link>
                     </div>
                 </div>
 
@@ -130,7 +132,7 @@ const CategoriesProducts: React.FC = () => {
                             Fast, reliable parcel delivery to and from local businesses.
                         </p>
                         <button className="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition duration-300">
-                            Send a Parcel
+                            Upcomming Product
                         </button>
                     </div>
                 </div>

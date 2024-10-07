@@ -32,7 +32,7 @@ const PartnerManagement: React.FC = () => {
 
   const fetchPartners = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/partners');
+      const response = await axios.get('https://generator-long-tree-8710.fly.dev/partners');
       setPartners(response.data);
     } catch (error) {
       console.error('Error fetching partners:', error);
@@ -67,7 +67,7 @@ const PartnerManagement: React.FC = () => {
 
   const addPartner = async () => {
     try {
-      await axios.post('http://localhost:3001/partners', newPartner);
+      await axios.post('https://generator-long-tree-8710.fly.dev/partners', newPartner);
       fetchPartners(); // Refresh the list
       setNewPartner({
         id: '',
@@ -89,7 +89,7 @@ const PartnerManagement: React.FC = () => {
 
   const updatePartner = async () => {
     try {
-      await axios.put(`http://localhost:3001/partners/${newPartner.id}`, newPartner);
+      await axios.put(`https://generator-long-tree-8710.fly.dev/partners/${newPartner.id}`, newPartner);
       fetchPartners();
       setIsEditing(false);
       setNewPartner({
@@ -107,7 +107,7 @@ const PartnerManagement: React.FC = () => {
 
   const deletePartner = async (partnerId: string) => {
     try {
-      await axios.delete(`http://localhost:3001/partners/${partnerId}`);
+      await axios.delete(`https://generator-long-tree-8710.fly.dev/partners/${partnerId}`);
       fetchPartners();
     } catch (error) {
       console.error('Error deleting partner:', error);

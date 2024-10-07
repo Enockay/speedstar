@@ -73,18 +73,15 @@ const Header: React.FC = () => {
   const isActiveLink = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-orange-900 text-white shadow-lg z-50">
-      <div className="container mx-auto md:px-6 px-3 py-4 flex justify-between items-center">
+    <header className="fixed mb-10 top-0 left-0 w-full bg-orange-900 text-white border-b-2 z-50 shadow-xl">
+      <div className="container mx-auto md:px-3 px-1 py-0 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
           <img
             src={logo}
             alt="Speedstar Logo"
-            className="md:w-12 md:h-12 h-12 w-12 mr-3 transform scale-150 hover:scale-125 transition-transform duration-300"
+            className="md:w-20 md:h-20 w-20 h-20 mr-3 ml-2 transform scale-150 hover:scale-175 transition-transform duration-300 "
           />
-          <span className="md:text-2xl hidden md:block text-xl font-extrabold tracking-wide">
-            Speedstar Delivery
-          </span>
         </div>
 
         {/* Desktop Navigation */}
@@ -132,7 +129,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden mr-2">
           <button
             className="text-white focus:outline-none"
             aria-label="Mobile Menu Toggle"

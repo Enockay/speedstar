@@ -21,10 +21,14 @@ const Footer: React.FC = () => {
               <h6 className="text-white font-extrabold">
                 <img src={logo} className='h-48' />
               </h6>
-              <p className="mt-[18px] text-[15px] font-normal text-white/[80%]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugit non. Incidunt dolorum adipisci, tempore asperiores nemo odio facere officiis enim animi placeat eaque nesciunt alias beatae id, at dicta.
-              </p>
-              <div className="mt-[18px] flex gap-4">
+              <br />
+              <span className=" font-semibold italic text-yellow-300 mt-2 ">
+                "We promise same-day delivery, real-time tracking, and unbeatable customer support."
+              </span>
+              <span className="block mt-2 text-yellow-100">
+                Join thousands of happy customers who trust us to get their errands done, hassle-free.
+              </span>
+             <div className="mt-[18px] flex gap-4">
                 <a className="hover:scale-110" target="_blank" rel="noopener noreferrer" href="#">
                   <img
                     alt="facebook icon"

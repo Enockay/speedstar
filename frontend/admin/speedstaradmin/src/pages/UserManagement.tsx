@@ -7,14 +7,14 @@ const UserManagement: React.FC = () => {
 
   useEffect(() => {
     // Fetch users from the backend
-    axios.get('http://localhost:3000/api/users').then((response) => {
+    axios.get('https://generator-long-tree-8710.fly.dev/users').then((response) => {
       setUsers(response.data);
     });
   }, []);
 
   const handleBlockUser = (userId: string) => {
     // Implement block/unblock user API call
-    axios.post(`http://localhost:3000/api/users/block/${userId}`).then(() => {
+    axios.post(`https://generator-long-tree-8710.fly.dev/users/block/${userId}`).then(() => {
       alert('User status updated');
     });
   };

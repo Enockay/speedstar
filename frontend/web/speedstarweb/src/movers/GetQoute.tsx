@@ -9,6 +9,12 @@ interface FormData {
   movingDate: string;
   fromLocation: string;
   toLocation: string;
+  fromFloor: string; // New field
+  toFloor: string; // New field
+  fragileMaterials: string; // New field
+  roomTypeFrom: string; // New field
+  roomTypeTo: string; // New field
+  intendedMoveTime: string; // New field
   description: string;
 }
 
@@ -21,6 +27,12 @@ const QuoteForm = () => {
     movingDate: '',
     fromLocation: '',
     toLocation: '',
+    fromFloor: '', // Initialize fromFloor
+    toFloor: '', // Initialize toFloor
+    fragileMaterials: '', // Initialize fragileMaterials
+    roomTypeFrom: '', // Initialize roomTypeFrom
+    roomTypeTo: '', // Initialize roomTypeTo
+    intendedMoveTime: '', // Initialize intendedMoveTime
     description: '',
   });
   const [loading, setLoading] = useState(false);
@@ -50,6 +62,12 @@ const QuoteForm = () => {
           movingDate: '',
           fromLocation: '',
           toLocation: '',
+          fromFloor: '',
+          toFloor: '',
+          fragileMaterials: '',
+          roomTypeFrom: '',
+          roomTypeTo: '',
+          intendedMoveTime: '',
           description: '',
         });
       })
@@ -140,25 +158,93 @@ const QuoteForm = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label className="block text-gray-700">Description</label>
+              <label className="block text-gray-700">From Floor</label>
+              <input
+                type="text"
+                name="fromFloor"
+                value={formData.fromFloor}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter the floor you are moving from"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="block text-gray-700">To Floor</label>
+              <input
+                type="text"
+                name="toFloor"
+                value={formData.toFloor}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter the floor you are moving to"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="block text-gray-700">Fragile Materials</label>
+              <textarea
+                name="fragileMaterials"
+                value={formData.fragileMaterials}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="List any fragile materials"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="block text-gray-700">Room Type Moving From</label>
+              <input
+                type="text"
+                name="roomTypeFrom"
+                value={formData.roomTypeFrom}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter the room type you are moving from"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="block text-gray-700">Room Type Moving To</label>
+              <input
+                type="text"
+                name="roomTypeTo"
+                value={formData.roomTypeTo}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter the room type you are moving to"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="block text-gray-700">Intended Move Time</label>
+              <input
+                type="time"
+                name="intendedMoveTime"
+                value={formData.intendedMoveTime}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="block text-gray-700">Additional Information</label>
               <textarea
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Provide additional details or instructions"
-                required
+                placeholder="Any additional information"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300"
+              className={`w-full py-3 mt-6 bg-indigo-600 text-white rounded-lg font-semibold ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-indigo-700'}`}
               disabled={loading}
             >
-              {loading ? 'Submitting...' : 'Submit Request'}
+              {loading ? 'Submitting...' : 'Get Quote'}
             </button>
-            {message && <p className="text-green-600 mt-4 text-center">{message}</p>}
           </form>
+          {message && <p className="mt-4 text-center text-green-600">{message}</p>}
         </div>
       </div>
     </section>

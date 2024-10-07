@@ -3,7 +3,7 @@ const {GridFSBucket} = require('mongodb')
 const multer = require('multer')
 
 const conn = mongoose.createConnection(process.env.MONGODB_URL)
-
+//console.log(conn);
 let gfsBucket
 conn.once('open', () => {
     gfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
@@ -34,7 +34,7 @@ const uploadOrUpdatedFile = (file,originalName,mimeType,encoding) => {
         })
 
         writeStream.on('finish', () => {
-            const flyerUrl = `https://blackiewebackend.fly.dev/cyberService/flyers/${writeStream.id}`
+            const flyerUrl = `https://generator-long-tree-8710.fly.dev/images/${writeStream.id}`
             resolve(flyerUrl)
         })
 

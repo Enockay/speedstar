@@ -5,13 +5,13 @@ const BookingManagement: React.FC = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/bookings').then((response) => {
+    axios.get('https://generator-long-tree-8710.fly.dev/bookings').then((response) => {
       setBookings(response.data);
     });
   }, []);
 
   const updateBookingStatus = (bookingId: string, status: string) => {
-    axios.post(`http://localhost:3001/api/bookings/update/${bookingId}`, { status }).then(() => {
+    axios.post(`https://generator-long-tree-8710.fly.dev/bookings/update/${bookingId}`, { status }).then(() => {
       alert('Booking status updated');
     });
   };

@@ -5,7 +5,7 @@ const AdminLogs: React.FC = () => {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/admin-logs').then((response) => {
+    axios.get('https://generator-long-tree-8710.fly.dev/admin-logs').then((response) => {
       setLogs(response.data);
     });
   }, []);
